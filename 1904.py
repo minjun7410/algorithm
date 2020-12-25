@@ -1,21 +1,15 @@
 N = int(input())
 tiles = [0 for _ in range(N+1)]
 
+for i in range(1, N+1):
+    if i == 1:
+        tiles[i] = 1
+    elif i == 2:
+        tiles[i] = 2
+    else:
+        tiles[i] = (tiles[i-1] + tiles[i-2]) % 15746
 
-def tile(n):
-    if n == 1:
-        return 1
-    elif n == 2:
-        return 2
-    elif tiles[n]:
-        return tiles[n]
-    tmp = tile(n-1) + tile(n-2)
-    tiles[n] = tmp
-    return tmp
-
-
-tile(N)
-print(tiles[N] % 15746)
+print(tiles[N])
 '''
 def tile_01(n):
     if tiles[n]:
