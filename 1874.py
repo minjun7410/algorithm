@@ -14,7 +14,7 @@ for value in lst:
         else:
             tmp = None
             while tmp != value:  # 1. 스택의 마지막 인자를 value에 맞춘다.
-                if len(rang) == 0:  # 2.any() 맞추지 못하고 더이상 넣을 숫자가 없을 경우 브레이크
+                if len(rang) == 0:  # 2. 맞추지 못하고 더이상 넣을 숫자가 없을 경우 브레이크
                     break
                 tmp = rang.pop()
                 stack.append(tmp)
