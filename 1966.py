@@ -10,14 +10,12 @@ for _ in range(T):
     max_value = max(documents)
     result = 0
     while queue:
-        result += 1
         if documents[queue[0]] == max_value:
+            documents[queue[0]] = -1
+            tmp = queue.popleft()
+            result += 1
             
-            print(documents)
-            print(queue)
-            del documents[queue[0]]
-            queue.popleft()
-            if not(queue):
+            if not(queue) or tmp == M:
                 break
             max_value = max(documents)
         else:
