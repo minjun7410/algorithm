@@ -24,15 +24,19 @@ def D(dequeue):
 T = int(sys.stdin.readline().rstrip())
 
 for _ in range(T):
+    direction = True
     command = sys.stdin.readline().rstrip()
     n = int(sys.stdin.readline().rstrip())
-    lst = sys.stdin.readline().strip('[]\n')
-    lst = deque(lst.split(','))
+    lst = deque(input().strip('[]\n').split(','))
+    if lst[0] == '':
+        lst = []
     for char in command:
         if char == 'R':
             result = R(lst)
         else:
             result = D(lst)
+        if result == "error":
+            break
     if result == "error":
         print('error')
     elif direction:
