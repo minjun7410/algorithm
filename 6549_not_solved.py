@@ -1,24 +1,37 @@
-def divide_conquer(histogram, n):  # (list, height)
+import sys
+sys.setrecursionlimit(300000)
+def divide_conquer(start, end):  # (list, height)
     global max_value
-    if len(histogram) == 1:  # 길이가 1일 때는 더이상 분할할 일이 없으므로 끝내준다.
-        max_value = histogram[0] if histogram[0] > max_value else max_value
+    if start == end:
+        max_value = histogram[start] if histogram[start] > max_value else max_value
         return
-    for i in range(len(histogram)):  # 
-        if histogram[i] == n:
-            divide_conquer(histogram[0:i], n)
-            divide_conquer(histogram[i+1:], n)
-            return
-    result = len(histogram) * n
-    max_value = result if result > max_value else max_value
-    divide_conquer(histogram[:], n+1)
+    min_index = start
+    min_value = histogram[start]
+    for i in range(start, end+1):
+        if histogram[i] < min_value:
+            min_index = i
+            min_value = histogram[i]
+    area = min_value * (end - start + 1)
+    max_value = area if area > max_value else max_value
+    
+    if start == min_index:
+        divide_conquer(min_index+1, end)
+    elif end == min_index:
+        divide_conquer(start, min_index-1)
+    else:
+        divide_conquer(start, min_index-1)
+        divide_conquer(min_index+1, end)
     return
+    
 
 
 while True:
-    histogram = list(map(int, input().split()))
+    histogram = list(map(int, sys.stdin.readline().split()))
     N = histogram[0]
     if N == 0:
         break
-    histogram = histogram[1::]
+    histogram = histogram[1:]
     max_value = 0
-    divide_conquer(histogram, 0)
+    
+    divide_conquer(0, len(histogram)-1)
+    print(max_value)
