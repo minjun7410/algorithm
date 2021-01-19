@@ -23,18 +23,27 @@
 # 2110 질문 - chogahui05
 
 def install(distance):  # 거리로 최대 설치할 수 있는 공유기 갯수를 구하는 함수.
-    count = 0
-    tmp = 0
-    while tmp != N
-        if lst[tmp] - lst[tmp] >= distance:
+    count = 1
+    tmp = lst[0]
+    for i in range(1, N):
+        if lst[i] - tmp >= distance:
+            tmp = lst[i]
             count += 1
+    return count
         
-def binary_search(target):
-    start = 1
-    end = lst[-1] - lst[0]
+def binary_search(target):  # target 만큼 공유기를 설치하는 거리중 최대값을 구하는 함수.
+    start = 1  # 1부터 (최소 거리)
+    end = lst[-1] - lst[0] # (최대 거리) 까지
     while start <= end:
         mid = (start + end) // 2
-        if 
+        instal = install(mid)
+        if instal >= target:
+            start = mid + 1
+        elif instal < target:
+            end = mid - 1
+    return end
 
 N, C = map(int, input().split())
 lst = sorted([int(input()) for _ in range(N)])
+end = binary_search(C)
+print(end)
