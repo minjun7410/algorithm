@@ -2,7 +2,7 @@ import heapq
 import sys
 heap = []
 
-for _ in range(int(sys.stdin.readline().rstrip()):
+for _ in range(int(sys.stdin.readline().rstrip())):
     command = int(sys.stdin.readline().rstrip())
     if command == 0:
         if len(heap) == 0:
