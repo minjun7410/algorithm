@@ -4,6 +4,10 @@
 # dp[x][x+y] = x부터 y까지 파일 크기 합
 # dp[i][j] = dp[i][k] + dp[k+1][j] + sum(i~j)
 
+#이후 knuth algorithm을 이용하여 문제를 풀어야겠다.
+#O(n^3) -> O(n^2)
+
+
 MAX = 999999999
 for _ in range(int(input())):
     N = int(input())
