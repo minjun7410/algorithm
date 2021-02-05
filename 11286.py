@@ -23,7 +23,7 @@ for _ in range(int(sys.stdin.readline().rstrip())):
     heapq.heappush(heap, x)
 
     
-#  다른 풀이
+#  다른 풀이f
 # 다른 사람의 풀이는 절대값이 같은 수일 때 \x\ = y (x < 0)
 # 그리고 x^2 = y^2 임을 이용하여
 # 힙에 push할 떄 (x^2, x)의 형식으로 저장한 후
