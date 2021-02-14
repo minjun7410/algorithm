@@ -16,7 +16,16 @@ for _ in range(int(input())):
         temp_coin = coin[i]
         for j in range(1, price+1):
             if j - temp_coin < 0:
+                dp[i][j] = dp[i-1][j]
                 continue
-            dp[i][j] = dp[i][j-temp_coin] + dp[i-1][j-temp_coin]
-        dp[]
-    print(dp)
+            if j - temp_coin == 0:
+                dp[i][j] = dp[i-1][j] + 1
+                dp[i][0] = 1
+                continue
+            dp[i][j] = dp[i][j-temp_coin] + dp[i-1][j]
+    print(dp[-1][-1])
+
+    
+# 생각보다 한참 걸린 문제
+# 냅색 기본 문제를 너무 의식했다.
+# dp[i][j] 를 구하는데 j-temp_coin이 0일 경우를 따로 처리했다.
