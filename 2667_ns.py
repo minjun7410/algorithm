@@ -7,20 +7,20 @@ from collections import deque
 graph = []
 N = int(input())
 for _ in range(N):
-    graph.append(list(map(int, input().split()))) # <- 입력을 보완
-
+    graph.append(list(map(int, input()))) # <- 입력을 보완
 # answer
 dx = [1, 0, -1, 0]
 dy = [0, 1, 0, -1]
 
+res = []
 
 def bfs(i, j):
     result = 0
     queue = deque([(i, j)])
+    graph[i][j] = -1
     while queue:
-        result += 1
         tmp = queue.popleft()
-        graph[tmp[0]][tmp[1]] = -1
+        result += 1
         for direction in range(4):
             ni = tmp[0] + dx[direction]
             nj = tmp[1] + dy[direction]
@@ -29,7 +29,8 @@ def bfs(i, j):
             if graph[ni][nj] != 1:
                 continue
             queue.append((ni, nj))
-    print(result)
+            graph[ni][nj] = -1
+    res.append(result)
     return
         
 
@@ -37,3 +38,8 @@ for i in range(N):
     for j in range(N):
         if graph[i][j] == 1:
             bfs(i, j)
+
+# print
+print(len(res))
+for value in sorted(res):
+    print(value)
