@@ -6,4 +6,22 @@
 # 따로 NXM 배열을 만든다. (이것은 dp를 저장하는 배열)
 # 이중포문으로 모든 방을 검사하는데
 # 이때 오른쪽 or 아래쪽 포지션 방과 현재 방(dp)의 합이 그 방(dp)보다 크면 갱신한다.
+import sys
+
+# input
+N, M = map(int, input().split())
+table = [list(map(int, input().split())) for _ in range(N)]
+
+# answer
+dp = [[0 for _ in range(M)] for _ in range(N)]
+dp[0][0] = table[0][0]
+for i in range(N):
+    for j in range(M):
+        if i + 1 < N:
+            tmp = dp[i][j] + table[i+1][j]
+            dp[i+1][j] = max(dp[i+1][j], tmp)
+        if j + 1 < M:
+            tmp = dp[i][j] + table[i][j+1]
+            dp[i][j+1] = max(dp[i][j+1], tmp)
+print(dp[-1][-1])
 
