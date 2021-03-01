@@ -5,6 +5,10 @@
 # 서류, 면접 1등을 각각 구한다.
 # 서류의 경우 면접 순위를 면접의 경우 서류 순위를 구하고 이를 마지노선으로 한다.
 # 각 지원자의 성적 중 하나라도 마지노선을 넘으면 카운트한다.
+# 이것도 안됨
+# 정렬 후 1에서 N까지 반복문을 돌림
+# 1이 4라면 temp는 4
+# 2가 3이면 temp > 3 그러므로 temp = 3 count += 1
 
 import sys
 input = sys.stdin.readline
@@ -15,23 +19,14 @@ T = int(input())
 for _ in range(T):
     N = int(input())
     count = 0
+    
     # solution
     
-    marginot_doc = None
-    marginot_inter = None
-    min_document = N+1
-    min_interview = N+1
-    applicants = []
-    for index in range(N):
-        doc, inter = map(int, input().split())
-        if min_document > doc:
-            min_document = doc
-            marginot_inter = inter
-        if min_interview > inter:
-            min_interview = inter
-            marginot_doc = doc
-        applicants.append((doc, inter))
-    for doc, inter in applicants:
-        if doc < marginot_doc or inter < marginot_inter:
+    lst = [tuple(map(int, input().split())) for _ in range(N)]
+    lst.sort(key = lambda x: x[0])
+    marginot = N+1
+    for value in lst:
+        if value[1] < marginot:
+            marginot = value[1]
             count += 1
     print(count)        
