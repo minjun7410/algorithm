@@ -10,7 +10,7 @@ input = sys.stdin.readline
 N, K = map(int, input().split())
 
 # solution
-max_value = max(N, K)
+max_value = 100000
 graph = [0 for _ in range(max_value + 1)]
 graph[N] = 0
 queue = deque([N])
