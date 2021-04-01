@@ -30,6 +30,8 @@ def dijkstra():
 def print_result(visited):
     for i in range(1, V+1):
         print(visited[i] if visited[i] != INF else "INF")
+
+
 # input
 V, E = map(int, input().split())
 K = int(input())
