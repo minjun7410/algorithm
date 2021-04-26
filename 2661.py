@@ -6,6 +6,7 @@
 import sys
 input = sys.stdin.readline
 
+
 def check_duplicates(seq):
     length = len(seq)
     for i in range(1, (length//2) + 1):
@@ -17,7 +18,11 @@ def check_duplicates(seq):
         if boolean:
             return True
     return False
+
+
 flag = False
+
+
 def back_tracking(n, seq):
     global flag
     if n == N:
@@ -32,6 +37,7 @@ def back_tracking(n, seq):
             if flag:
                 return res
     return seq
+
 
 N = int(input())
 result = back_tracking(1, '1')
