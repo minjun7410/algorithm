@@ -13,4 +13,4 @@ for i in range(1, N+1):
             dp[i][j] = max(dp[i-1][j], value[i] + dp[i-1][j-weight[i]])
         else:
             dp[i][j] = dp[i-1][j]
-print(dp[N][K])
+print(dp[N][K]) 
